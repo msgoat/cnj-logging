@@ -1,0 +1,61 @@
+# Default values for cnj-logging-backend-javaee.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ${docker.image.name}
+  tag: ${project.version}
+  pullPolicy: IfNotPresent
+
+probes:
+  readiness:
+    path: /api/v1/probes/readiness
+  liveness:
+    path: /api/v1/probes/liveness
+
+nameOverride: ""
+fullnameOverride: ""
+partOfOverride: "cnj-logging"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.frontend.rule.type: PathPrefixStrip
+  host: "${k8s.ingress.host}"
+  paths: ["${k8s.ingress.path}"]
+
+resources:
+  limits:
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 756Mi
+
+# security configuration (Open ID Connect)
+security:
+  oidc:
+    jwksUri: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs"
+    issuer: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain"
+
+# downstream service configuration
+downstream:
+  rest:
+    url: "http://cnj-logging-downstream"
+
+# persistence configuration (PostgreSQL)
+persistence:
+  postgres:
+    user: postgres
+    database: cloudtrain
+    host: cnj-logging-resources-postgresql
+    port: 5432
+    secret:
+      name: cnj-logging-resources-postgresql
+      keys:
+        password: postgresql-password

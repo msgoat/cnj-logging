@@ -1,0 +1,25 @@
+# docker-compose.yml
+# ----------------------------------------------------------------------------
+# Composes Docker containers and volumes to a runnable Java EE application
+# ----------------------------------------------------------------------------
+#
+---
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeit
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: cloudtrain
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+
+  postgres-data:

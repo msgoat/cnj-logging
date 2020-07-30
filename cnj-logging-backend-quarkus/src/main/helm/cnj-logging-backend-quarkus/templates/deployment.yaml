@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cnj-logging-backend-quarkus.fullname" . }}
+  labels:
+    {{- include "cnj-logging-backend-quarkus.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "cnj-logging-backend-quarkus.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "cnj-logging-backend-quarkus.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.probes.liveness.path }}
+              port: http
+            initialDelaySeconds: 60
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.probes.readiness.path }}
+              port: http
+            initialDelaySeconds: 15
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: MP_JWT_VERIFY_PUBLICKEY_LOCATION
+              value: {{ .Values.security.oidc.jwksUri | quote }}
+            - name: MP_JWT_VERIFY_ISSUER
+              value: {{ .Values.security.oidc.issuer | quote }}
+            - name: CLOUDTRAIN_SERVICES_GRANTEDPERMISSIONS_MP_REST_URL
+              value: {{ .Values.downstream.rest.url | quote }}
+            - name: QUARKUS_DATASOURCE_USERNAME
+              value: {{ .Values.persistence.postgres.user }}
+            - name: QUARKUS_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.persistence.postgres.secret.name }}
+                  key: {{ .Values.persistence.postgres.secret.keys.password }}
+            - name: QUARKUS_DATASOURCE_JDBC_URL
+              value: "jdbc:postgresql://{{ .Values.persistence.postgres.host }}:{{ .Values.persistence.postgres.port }}/{{ .Values.persistence.postgres.database }}"
+{{- if .Values.image.pullSecret }}
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecret }}
+{{- end }}
+{{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

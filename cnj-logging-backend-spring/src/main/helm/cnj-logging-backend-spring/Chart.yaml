@@ -1,0 +1,5 @@
+apiVersion: v2
+appVersion: "${project.version}"
+description: "${project.description}"
+name: cnj-logging-backend-spring
+version: 1.0.0
