@@ -221,7 +221,7 @@
                         <executions>
                             <execution>
                                 <id>helm-dependency-update</id>
-                                <phase>install</phase>
+                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>dependency-update</goal>
                                 </goals>
@@ -232,7 +232,7 @@
                             </execution>
                             <execution>
                                 <id>helm-install-resources</id>
-                                <phase>install</phase>
+                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>deploy</goal>
                                 </goals>
