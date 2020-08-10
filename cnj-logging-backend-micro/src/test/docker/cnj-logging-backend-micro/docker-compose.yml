@@ -11,7 +11,7 @@ services:
   downstream:
     image: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-logging-downstream:latest
     environment:
-      SPRING_PROFILES_ACTIVE: cloud
+      SPRING_PROFILES_ACTIVE: dev
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs
       SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain
 
@@ -30,6 +30,7 @@ services:
     ports:
       - "38080:8080"
     environment:
+      PAYARA_LOGGING_FORMAT: "TEXT"
       MP_JWT_VERIFY_PUBLICKEY_LOCATION: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs"
       MP_JWT_VERIFY_ISSUER: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain"
       CLOUDTRAIN_SERVICES_GRANTEDPERMISSIONS_MP_REST_URL: "http://downstream:8080"

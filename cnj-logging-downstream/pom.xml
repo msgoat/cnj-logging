@@ -103,7 +103,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- showcase specific section -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -116,6 +115,12 @@
             <groupId>group.msg.at.cloud.common</groupId>
             <artifactId>cnj-common-security-oidc-spring</artifactId>
             <version>${common.security.version}</version>
+        </dependency>
+        <!-- showcase specific section -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.logback.encoder.version}</version>
         </dependency>
         <!-- =========================== -->
         <!-- test time dependencies      -->

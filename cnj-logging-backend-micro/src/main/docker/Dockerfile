@@ -7,8 +7,9 @@ LABEL maintainer="michael.theis@msg.group" \
 
 ENV JAVA_OPTS="" \
     DOCKER_JAVA_OPTS="" \
-    PAYARA_JAVA_OPTS="-Djava.util.logging.ConsoleHandler.formatter=fish.payara.enterprise.server.logging.JSONLogFormatter" \
-    PAYARA_ARGUMENTS="--disablephonehome --enablehealthcheck true --nocluster --nohostaware"
+    PAYARA_JAVA_OPTS="" \
+    PAYARA_ARGUMENTS="--disablephonehome --enablehealthcheck true --nocluster --nohostaware" \
+    PAYARA_LOGGING_FORMAT="JSON"
 
 RUN echo "adding run user payara to system" \
     && addgroup -S payara -g 1000 \
@@ -17,6 +18,7 @@ RUN echo "adding run user payara to system" \
 # copy build artifact into payara deployment folder
 COPY *.jar /home/payara/
 COPY docker-entrypoint.sh /home/payara/
+COPY logging.properties /home/payara/
 
 RUN chown -R payara:payara /home/payara \
     && chmod u+x /home/payara/docker-entrypoint.sh

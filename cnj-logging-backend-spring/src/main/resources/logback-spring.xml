@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="default">
+        <include resource="org/springframework/boot/logging/logback/base.xml" />
+    </springProfile>
+    <springProfile name="cloud">
+        <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+        </appender>
+        <!-- LOG everything at INFO level -->
+        <root level="info">
+            <appender-ref ref="Console"/>
+        </root>
+    </springProfile>
+</configuration>

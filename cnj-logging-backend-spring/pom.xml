@@ -124,7 +124,6 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.4.3</version>
         </dependency>
-        <!-- showcase specific section -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -136,6 +135,12 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+        </dependency>
+        <!-- showcase specific section -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.logback.encoder.version}</version>
         </dependency>
         <!-- =========================== -->
         <!-- test time dependencies      -->

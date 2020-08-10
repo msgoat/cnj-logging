@@ -5,6 +5,36 @@ Cloud native Quarkus backend with support of cluster logging using an EFK stack:
 * everything is logged to stdout (no file appenders)
 * uses JSON logging format
 
+## Enable JSON logging in Quarkus
+
+In order to switch Quarkus to JSON logging output format, you will have to proceed through the following steps:
+
+### Add a dependency to the JSON logging extension
+
+Add a dependency to the JSON logging extension to your POM:
+
+```xml
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-logging-json</artifactId>
+</dependency>
+```
+
+## Temporarily switching off JSON logging
+
+JSON formatted log files are hard to read for humans. Fortunately, you can switch off JSON logging by adding
+a profiled configuration property to your application.properties file:
+
+```properties
+%dev.quarkus.log.console.json=false
+```
+
+Now if you activate profile __dev__, JSON logging will be switched off, although the JSON logging extension has been added to your application.
+
+> Quarkus profiles are activated by adding an envvar `QUARKUS_PROFILE` with the name of the profile to activate to your Docker container configuration.
+>
+
+
 ## Build this application 
 
 ``` 

@@ -12,7 +12,7 @@
         <!-- runtime related properties -->
         <java.version>11</java.version>
         <javaee.version>8.0.1</javaee.version>
-        <payara.version>5.2020.2</payara.version>
+        <payara.version>5.2020.3</payara.version>
         <microprofile.version>3.3</microprofile.version>
         <postgres.jdbc.version>42.2.10</postgres.jdbc.version>
         <!-- common logging dependencies -->
