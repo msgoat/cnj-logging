@@ -9,4 +9,5 @@ maintainers:
 dependencies:
   - name: postgresql
     version: "8.8.0"
-    repository: "@bitnami"
+    repository: "https://charts.bitnami.com/bitnami"
+"
