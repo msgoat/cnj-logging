@@ -31,7 +31,7 @@ steps:
     privileged: true
     commands:
       - start-docker.sh
-      - mvn clean deploy -f cnj-logging-backend-javaee/pom.xml -B -ff -e -V -U -P commit-stage -Dchangelist=.${DRONE_BRANCH} -Dsha1=.${DRONE_COMMIT_SHA:0:8}
+      - mvn clean deploy -f cnj-logging-backend-javaee/pom.xml -B -ff -e -V -U -P commit-stage -Dchangelist=.${DRONE_BRANCH} -Dsha1=.${DRONE_COMMIT_SHA:0:8} -Dtest.target.readinessProbe.failureThreshold=10
   - name: javaee-integration-test-stage
     image: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-drone-build:1.1.0
     commands:
