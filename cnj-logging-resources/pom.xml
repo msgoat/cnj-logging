@@ -28,9 +28,9 @@
         <!-- pinning versions of cloud native specific maven plugins -->
         <maven.compose.plugin.version>1.0.0</maven.compose.plugin.version>
         <maven.docker.plugin.version>0.33.0</maven.docker.plugin.version>
-        <maven.helm.plugin.version>2.0.1</maven.helm.plugin.version>
+        <maven.helm.plugin.version>2.1.0</maven.helm.plugin.version>
         <!-- new Maven version management -->
-        <revision>4.0.0</revision>
+        <revision>4.1.0</revision>
         <sha1></sha1>
         <changelist></changelist>
     </properties>
@@ -186,9 +186,12 @@
         <!-- profile integration-test-stage representing integration-test-stage of CI build -->
         <profile>
             <id>integration-test-stage</id>
-            <properties>
-                <k8s.cluster.namespace>cloudtrain-int</k8s.cluster.namespace>
-            </properties>
+                <properties>
+                    <k8s.cluster.namespace>cloudtrain-int</k8s.cluster.namespace>
+                    <postgres.admin.password>${env.POSTGRES_ADMIN_PASSWORD}</postgres.admin.password>
+                    <postgres.user.password>${env.POSTGRES_USER_PASSWORD}</postgres.user.password>
+                    <postgres.user.name>${env.POSTGRES_USER_NAME}</postgres.user.name>
+                </properties>
             <build>
                 <plugins>
                     <!-- copy resources for helm deployment applying filtering -->
@@ -242,6 +245,11 @@
                                     <namespace>${k8s.cluster.namespace}</namespace>
                                     <debug>true</debug>
                                     <timeout>90s</timeout>
+                                    <values>
+                                        <postgresql.postgresqlPostgresPassword>${postgres.admin.password}</postgresql.postgresqlPostgresPassword>
+                                        <postgresql.postgresqlPassword>${postgres.user.password}</postgresql.postgresqlPassword>
+                                        <postgresql.postgresqlUsername>${postgres.user.name}</postgresql.postgresqlUsername>
+                                    </values>
                                 </configuration>
                             </execution>
                         </executions>

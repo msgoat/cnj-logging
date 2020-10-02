@@ -7,8 +7,15 @@ steps:
   - name: resources-integration-test-stage
     image: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-drone-build:1.1.0
     pull: always
+    environment:
+      POSTGRES_ADMIN_PASSWORD:
+        from_secret: postgres_admin_password
+      POSTGRES_USER_NAME:
+        from_secret: postgres_user_name
+      POSTGRES_USER_PASSWORD:
+        from_secret: postgres_user_password
     commands:
-      - mvn clean verify -f cnj-logging-resources/pom.xml -B -ff -e -V -U -P  integration-test-stage -Dchangelist=.${DRONE_BRANCH} -Dsha1=.${DRONE_COMMIT_SHA:0:8}
+      - mvn clean install -f cnj-logging-resources/pom.xml -B -ff -e -V -U -P  integration-test-stage -Dchangelist=.${DRONE_BRANCH} -Dsha1=.${DRONE_COMMIT_SHA:0:8}
   - name: downstream-commit-stage
     image: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-drone-build:1.1.0
     privileged: true

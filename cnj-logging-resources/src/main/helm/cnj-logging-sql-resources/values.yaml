@@ -97,16 +97,19 @@ postgresql:
 
   ## PostgreSQL admin password (used when `postgresqlUsername` is not `postgres`)
   ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-user-on-first-run (see note!)
-  # postgresqlPostgresPassword:
+  postgresqlPostgresPassword: ""
 
   ## PostgreSQL user (has superuser privileges if username is `postgres`)
   ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
-  postgresqlUsername: postgres
+  postgresqlUsername: ""
 
   ## PostgreSQL password
   ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
   ##
   postgresqlPassword: ""
+
+  # existingSecret is the name of an existing secret which will be used to set passwords
+  existingSecret: cnj-logging-resources-postgres
 
   ## Mount PostgreSQL secret as a file instead of passing environment variable
   # usePasswordFile: false

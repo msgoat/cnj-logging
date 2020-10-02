@@ -51,11 +51,11 @@ downstream:
 # persistence configuration (PostgreSQL)
 persistence:
   postgres:
-    user: postgres
     database: cloudtrain
     host: cnj-logging-resources-postgresql
     port: 5432
     secret:
-      name: cnj-logging-resources-postgresql
+      name: cnj-logging-resources-postgres
       keys:
+        user: postgresql-user
         password: postgresql-password
