@@ -62,7 +62,7 @@
         <maven.docker.plugin.version>0.33.0</maven.docker.plugin.version>
         <maven.helm.plugin.version>2.1.0</maven.helm.plugin.version>
         <!-- new Maven version management -->
-        <revision>4.2.0</revision>
+        <revision>4.2.1</revision>
         <sha1></sha1>
         <changelist></changelist>
     </properties>
@@ -113,14 +113,17 @@
         <dependency>
             <groupId>org.eclipse.microprofile.jwt</groupId>
             <artifactId>microprofile-jwt-auth-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.rest.client</groupId>
             <artifactId>microprofile-rest-client-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.microprofile.openapi</groupId>
             <artifactId>microprofile-openapi-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -137,7 +140,6 @@
             <artifactId>cnj-common-rest-jee</artifactId>
             <version>${common.rest.version}</version>
         </dependency>
-        <!-- showcase specific section -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -153,6 +155,7 @@
             <artifactId>cnj-common-persistence-jpa</artifactId>
             <version>${common.persistence.jpa.version}</version>
         </dependency>
+        <!-- showcase specific section -->
         <!-- =========================== -->
         <!-- test time dependencies      -->
         <!-- =========================== -->

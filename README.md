@@ -1,6 +1,7 @@
 # cnj-logging
 
-Showcase demonstrating cloud native logging in a Kubernetes cluster.
+Showcase demonstrating cloud native logging in a Kubernetes cluster using a system tool stack based on
+Elasticsearch, FluentBit and Kibana.
 
 The actual integration of cluster logging is demonstrated with four different Java backend technologies:
 
@@ -14,7 +15,7 @@ All showcases use a common resources container project, which deploys all attach
 In this showcase, [SL4J](http://www.slf4j.org/) is used as the common logging framework. 
 
 ## Status
-![Build status](https://drone.at.automotive.msg.team/api/badges/msgoat/cnj-logging/status.svg)
+![Build status](https://drone.at41tools.k8s.aws.msgoat.eu/api/badges/msgoat/cnj-logging/status.svg)
 
 ## Build this showcase 
 
