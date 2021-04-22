@@ -100,7 +100,7 @@ public class TasksEndpointSystemTest {
         Response postResponse = given().auth().oauth2(fixture.getAccessToken())
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
-                .header("X-Forwarded-Host", "apps.at41tools.k8s.aws.msgoat.eu")
+                .header("X-Forwarded-Host", "apps.cloudtrain.aws.msgoat.eu")
                 .header("X-Forwarded-Proto", "https")
                 .header("X-Forwarded-Prefix", "/cloudtrain-int/cnj-logging-backend-micro")
                 .body(createTask().toString())

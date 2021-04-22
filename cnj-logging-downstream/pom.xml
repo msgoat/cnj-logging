@@ -23,7 +23,7 @@
         <!-- common security dependencies -->
         <common.security.version>1.2.0</common.security.version>
         <!-- docker related properties -->
-        <docker.registry.name>docker.at41tools.k8s.aws.msgoat.eu</docker.registry.name>
+        <docker.registry.name>docker.cloudtrain.aws.msgoat.eu</docker.registry.name>
         <docker.organization.name>cloudtrain</docker.organization.name>
         <docker.image.name>${docker.registry.name}/${docker.organization.name}/${project.artifactId}</docker.image.name>
         <docker.removeMode>all</docker.removeMode>
@@ -31,9 +31,9 @@
         <docker.verbose>true</docker.verbose>
         <docker.test.target.route>http://localhost:38080</docker.test.target.route>
         <!-- kubernetes related properties -->
-        <k8s.cluster.route>https://apps.at41tools.k8s.aws.msgoat.eu</k8s.cluster.route>
+        <k8s.cluster.route>https://apps.cloudtrain.aws.msgoat.eu</k8s.cluster.route>
         <k8s.cluster.namespace>default</k8s.cluster.namespace>
-        <k8s.ingress.host></k8s.ingress.host>
+        <k8s.ingress.host>apps.cloudtrain.aws.msgoat.eu</k8s.ingress.host>
         <k8s.ingress.path>/${k8s.cluster.namespace}/${project.artifactId}</k8s.ingress.path>
         <k8s.test.target.route>${k8s.cluster.route}${k8s.ingress.path}</k8s.test.target.route>
         <!-- pinning versions of common maven plugins -->
@@ -53,9 +53,9 @@
         <!-- pinning versions of application type specific maven plugins -->
         <maven.spring.boot.plugin.version>${spring.boot.version}</maven.spring.boot.plugin.version>
         <!-- pinning versions of cloud native specific maven plugins -->
-        <maven.compose.plugin.version>1.0.0</maven.compose.plugin.version>
+        <maven.compose.plugin.version>2.0.0</maven.compose.plugin.version>
         <maven.docker.plugin.version>0.33.0</maven.docker.plugin.version>
-        <maven.helm.plugin.version>2.1.0</maven.helm.plugin.version>
+        <maven.helm.plugin.version>3.0.0</maven.helm.plugin.version>
         <!-- new Maven version management -->
         <revision>1.1.0</revision>
         <sha1></sha1>
@@ -759,7 +759,7 @@
         <repository>
             <id>at41-maven-repository</id>
             <name>msg Automotive AT Maven Releases Repository</name>
-            <url>https://nexus.at41tools.k8s.aws.msgoat.eu/repository/maven-releases/</url>
+            <url>https://nexus.cloudtrain.aws.msgoat.eu/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 </project>

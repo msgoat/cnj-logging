@@ -15,7 +15,11 @@ All showcases use a common resources container project, which deploys all attach
 In this showcase, [SL4J](http://www.slf4j.org/) is used as the common logging framework. 
 
 ## Status
-![Build status](https://drone.at41tools.k8s.aws.msgoat.eu/api/badges/msgoat/cnj-logging/status.svg)
+![Build status](https://drone.cloudtrain.aws.msgoat.eu/api/badges/msgoat/cnj-logging/status.svg)
+
+## Release information
+
+Check [changelog](changelog.md) for latest version and release information.
 
 ## Build this showcase 
 
