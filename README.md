@@ -5,7 +5,6 @@ Elasticsearch, FluentBit and Kibana.
 
 The actual integration of cluster logging is demonstrated with four different Java backend technologies:
 
-* Java EE (see: [cnj-logging-backend-javaee](cnj-logging-backend-javaee/README.md))
 * Eclipse MicroProfile (see: [cnj-logging-backend-micro](cnj-logging-backend-micro/README.md))
 * Spring Boot + Spring Data (see: [cnj-logging-backend-spring](cnj-logging-backend-spring/README.md))
 * Quarkus (see: [cnj-logging-backend-quarkus](cnj-logging-backend-quarkus/README.md))

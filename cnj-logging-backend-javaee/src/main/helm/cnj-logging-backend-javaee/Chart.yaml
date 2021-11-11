@@ -1,6 +1,0 @@
-apiVersion: v2
-name: cnj-logging-backend-javaee
-description: "${project.description}"
-type: application
-version: 4.0.0
-appVersion: "${project.version}"
