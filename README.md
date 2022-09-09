@@ -1,6 +1,11 @@
 # cnj-logging
 
-@deprecated: Replaced by new repositories [cnj-logging-backend-micro](https://github.com/msgoat/cnj-logging-backend-micro), [cnj-logging-backend-quarkus](https://github.com/msgoat/cnj-logging-backend-quarkus), [cnj-logging-backend-spring](https://github.com/msgoat/cnj-logging-backend-spring), [cnj-logging-downstream](https://github.com/msgoat/cnj-logging-downstream), and [cnj-logging-resources](https://github.com/msgoat/cnj-logging-resources).
+> @deprecated: Replaced by new repositories 
+> [cnj-logging-backend-micro](https://github.com/msgoat/cnj-logging-backend-micro), 
+> [cnj-logging-backend-quarkus](https://github.com/msgoat/cnj-logging-backend-quarkus), 
+> [cnj-logging-backend-spring](https://github.com/msgoat/cnj-logging-backend-spring), 
+> [cnj-logging-downstream](https://github.com/msgoat/cnj-logging-downstream), 
+> and [cnj-logging-resources](https://github.com/msgoat/cnj-logging-resources).
 
 Showcase demonstrating cloud native logging in a Kubernetes cluster using a system tool stack based on
 Elasticsearch, FluentBit and Kibana.
